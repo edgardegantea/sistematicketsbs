@@ -1,6 +1,5 @@
 <?= $this->extend('layout/basic') ?>
 
-
 <?= $this->section('botones') ?>
 <div class="">
     <!-- <a href="/tickets/" class="button is-light">Cancelar</a> -->
@@ -8,16 +7,16 @@
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
-<section class="section">
+<div class="container">
 
     <?php $validation = \Config\Services::validation(); ?>
     <form action="<?php echo base_url('solicitud/') ?>" method="post" enctype="">
         <?= csrf_field(); ?>
 
-        <div class="field">
+        <div class="">
             <label class="label">Asunto:</label>
-            <div class="control">
-                <input class="input <?php if ($validation->getError('title')): ?>is-invalid<?php endif; ?>" required type="text" name="title"
+            <div class="">
+                <input class="form-control <?php if ($validation->getError('title')): ?>is-invalid<?php endif; ?>" required type="text" name="title"
                        style="font-size: x-large; text-transform: uppercase" value="<?php echo set_value('title'); ?>">
                 <?php if ($validation->getError('title')): ?>
                 <div class="invalid-feedback">
@@ -48,9 +47,9 @@
             <div class="column">
                 <div class="field">
                     <label class="label">Área:</label>
-                    <div class="control">
+                    <div class="">
                         <div class="select">
-                            <select required name="area">
+                            <select required name="area" class="">
 
                                 <option disabled selected>Seleccione el área que requiere el soporte:</option>
                                 <?php foreach ($areas as $a): ?>
@@ -222,7 +221,7 @@
 
     </form>
 
-</section>
+</div>
 
 
 <?= $this->endSection() ?>

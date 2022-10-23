@@ -37,8 +37,8 @@ class KanbanController extends ResourceController
             'ticketsEnSeguimiento' => $ticketsEnSeguimiento,
             'ticketsCerrados' => $ticketsCerrados,
             'ts01'   => $tickets->where('status', 's01')->orderBy('id', 'desc')->findAll(),
-            'ts02'   => $tickets->where('status', 's02')->orderBy('id', 'desc')->findAll(),
-            'ts03'   => $tickets->where('status', 's03')->orderBy('id', 'desc')->findAll(),
+            'ts03'   => $tickets->where('status', 's05')->orWhere('status', 's08')->orderBy('id', 'desc')->findAll(5),
+            'ts02'   => $tickets->where('status', 's02')->orWhere('status', 's03')->orWhere('status', 's04')->orWhere('status', 's06')->orWhere('status', 's07')->orderBy('id', 'desc')->findAll(5),
         ];
         return view('kanban/index', $data);
     }
